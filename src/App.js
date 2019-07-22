@@ -1,26 +1,46 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
+import HomePage from './HomePage';
+import SignIn from './SignIn';
 import './App.css';
+import {
+  Route,
+  Redirect,
+  withRouter
+} from 'react-router-dom';
+import * as ROUTES from './constants/routes';
+import { withFirebase } from './Firebase';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      loading: true,
+    }
+  }
+
+  async componentDidMount(props) {
+    if(this.props.firebase.loggedIn) {
+      this.props.history.push(ROUTES.HOME)
+    } else {
+      this.props.history.push(ROUTES.SIGN_IN)
+    }
+    const user = await this.props.firebase.checkAuth();
+    if(this.props.firebase.loggedIn) {
+      this.props.history.push(ROUTES.HOME)
+    } else {
+      this.props.history.push(ROUTES.SIGN_IN)
+    }
+    this.setState({loading: false});
+  }
+
+  render() {
+    return (
+      <div className="App">
+          <Route exact path={ROUTES.SIGN_IN} component={SignIn} />
+          <Route exact path={ROUTES.HOME} component={HomePage} />
+      </div>
+    );
+  }
 }
 
-export default App;
+export default withRouter(withFirebase(App));
