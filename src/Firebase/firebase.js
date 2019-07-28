@@ -1,6 +1,6 @@
 import app from 'firebase/app';
 import 'firebase/auth';
-
+import 'firebase/firestore'
 const firebaseConfig = {
   apiKey: "AIzaSyCLtwrZUuIQkb3cgLYGCcpd9kKemhUuLB8",
   authDomain: "apex-member-dashboard.firebaseapp.com",
@@ -83,7 +83,33 @@ class Firebase {
   }
   checkAuth = async () => {
     let user = await this.checkAuthStatus()
-    console.log(user);
+    if (user) {
+      const usersDB = app.firestore().collection("users");
+      usersDB.doc(user.uid).get().then(doc => {
+        if (doc.exists) {
+          console.log("Document data:", doc.data());
+          this.userData = doc.data();
+        } else {
+            // doc.data() will be undefined in this case
+            console.log("DB User not created");
+            //Create user because not created yet
+            const nameArr = user.displayName.split(" ")
+            usersDB.doc(user.uid).set({
+              name: {
+                first: nameArr[0],
+                last: nameArr[1],
+              },
+              email: user.email,
+              photoURL: user.photoURL
+            }).then(function() {
+                console.log("DB user successfully created");
+            })
+            .catch(function(error) {
+                console.error("Error writing user to db: ", error);
+            });
+        }
+      })
+    }
     return this.user;
   }
 }
