@@ -17,6 +17,9 @@ class Firebase {
     this.loggedIn = false;
     this.provider = new app.auth.GoogleAuthProvider();
     this.provider.addScope('https://www.googleapis.com/auth/drive');
+    this.provider.setCustomParameters({
+     'hd': 'umich.edu'
+    });
     app.auth().useDeviceLanguage();
   }
 
@@ -85,7 +88,7 @@ class Firebase {
     let user = await this.checkAuthStatus()
     if (user) {
       const usersDB = app.firestore().collection("users");
-      usersDB.doc(user.uid).get().then(doc => {
+      await usersDB.doc(user.uid).get().then(async (doc) => {
         if (doc.exists) {
           console.log("Document data:", doc.data());
           this.userData = doc.data();
@@ -94,17 +97,25 @@ class Firebase {
             console.log("DB User not created");
             //Create user because not created yet
             const nameArr = user.displayName.split(" ")
-            usersDB.doc(user.uid).set({
+            await usersDB.doc(user.uid).set({
               name: {
                 first: nameArr[0],
                 last: nameArr[1],
               },
               email: user.email,
               photoURL: user.photoURL
-            }).then(function() {
+            }).then(() => {
                 console.log("DB user successfully created");
+                this.userData = {
+                  name: {
+                    first: nameArr[0],
+                    last: nameArr[1],
+                  },
+                  email: user.email,
+                  photoURL: user.photoURL
+                }
             })
-            .catch(function(error) {
+            .catch((error) => {
                 console.error("Error writing user to db: ", error);
             });
         }

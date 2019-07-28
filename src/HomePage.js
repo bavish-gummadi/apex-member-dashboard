@@ -20,9 +20,19 @@ class HomePage extends Component {
     return (
       <div>
         <header className="App-header">
-          <h2>
-            Hi {this.props.firebase.user && this.props.firebase.user.displayName}
-          </h2>
+          {this.props.firebase.user ? (
+            <>
+              <h2>
+                Hi {this.props.firebase.user.displayName}
+              </h2>
+              <img src={this.props.firebase.userData.photoURL} alt="userPhoto"/>
+            </>
+          ) : (
+            <h2>
+              Loading...
+            </h2>)
+          }
+
           <h2>
             Apex Member Dashboard
           </h2>
