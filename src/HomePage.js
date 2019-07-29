@@ -23,7 +23,7 @@ class HomePage extends Component {
           {this.props.firebase.user ? (
             <>
               <h2>
-                Hi {this.props.firebase.user.displayName}
+                Hi {this.props.firebase.userData.name.first}
               </h2>
               <img src={this.props.firebase.userData.photoURL} alt="userPhoto"/>
             </>
