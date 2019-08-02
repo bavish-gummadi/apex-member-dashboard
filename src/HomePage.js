@@ -27,13 +27,13 @@ function Header(props) {
 function SearchBar(props) {
     return (
    <div class="search-box">
-                        <div class="inner">
-                            <form action="{% url 'parks:search-results' %}" method="get" accept-charset="utf-8">
-                                <input type="text" placeholder="Search" name="q" /><button type="submit">SEARCH</button>
-                            </form>
-                        </div>
-                </div>
-    )
+        <div class="inner">
+             <form action="{% url 'parks:search-results' %}" method="get" accept-charset="utf-8">
+                  <input type="text" placeholder="Search" name="q" /><button type="submit">SEARCH</button>
+             </form>
+        </div>
+   </div>
+   )
 }
  
 class HomePage extends Component {
