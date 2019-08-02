@@ -1,14 +1,10 @@
 import React, { Component, Fragment } from 'react';
 import * as ROUTES from './constants/routes';
-import { withRouter } from 'react-router-dom';
 import { withFirebase } from './Firebase';
 
 class SignIn extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      user: "",
-    }
     this.logIn = this.logIn.bind(this)
   }
   componentDidMount(props) {
@@ -28,4 +24,4 @@ class SignIn extends Component {
   }
 }
 
-export default withRouter(withFirebase(SignIn))
+export default withFirebase(SignIn)
