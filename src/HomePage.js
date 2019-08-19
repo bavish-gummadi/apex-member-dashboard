@@ -3,31 +3,21 @@ import { withFirebase } from './Firebase';
 import * as ROUTES from './constants/routes';
 import Header from './Header.js'
 import Spinner from 'react-bootstrap/Spinner'
+import SearchBar from './SearchBar.js'
 
-function SearchBar(props) {
-    return (
-   <div class="search-box">
-        <div class="inner">
-             <form action="{% url 'parks:search-results' %}" method="get" accept-charset="utf-8">
-                  <input type="text" placeholder="Search" name="q" /><button type="submit">SEARCH</button>
-             </form>
-        </div>
-   </div>
-   )
-}
 
 class HomePage extends Component {
   constructor(props) {
     super(props);
     this.state =  {
-      queryParam: "people",
+      category: "people",
     }
 
-    this.setQueryParam = this.setQueryParam.bind(this);
+    this.setCategory = this.setCategory.bind(this);
   }
 
-  setQueryParam = (param) => {
-    this.setState({queryParam: param});
+  setCategory = (param) => {
+    this.setState({category: param});
   }
 
   signOut = (props) => {
@@ -45,10 +35,10 @@ class HomePage extends Component {
       <div>
         <div className="container-side">
             <Header
-              setQueryParam={this.setQueryParam}
+              setQueryParam={this.setCategory}
               />
             <SearchBar />
-            <h2>{this.state.queryParam}</h2>
+            <h2>{this.state.category}</h2>
         </div>
         <header className="App-header">
           {this.props.firebase.user ? (
