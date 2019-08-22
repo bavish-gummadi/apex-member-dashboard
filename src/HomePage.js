@@ -4,6 +4,7 @@ import * as ROUTES from './constants/routes';
 import Header from './Header.js'
 import Spinner from 'react-bootstrap/Spinner'
 import SearchBar from './SearchBar.js'
+import Results from './Results.js'
 
 
 class HomePage extends Component {
@@ -18,6 +19,7 @@ class HomePage extends Component {
 
   setCategory = (param) => {
     this.setState({category: param});
+    
   }
 
   signOut = (props) => {
@@ -34,11 +36,10 @@ class HomePage extends Component {
     return (
       <div>
         <div className="container-side">
-            <Header
-              setQueryParam={this.setCategory}
-              />
+            <Header setCategory={this.setCategory}/>
             <SearchBar />
             <h2>{this.state.category}</h2>
+            <Results />
         </div>
         <header className="App-header">
           {this.props.firebase.user ? (

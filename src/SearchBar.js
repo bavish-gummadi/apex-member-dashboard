@@ -9,9 +9,9 @@ class SearchBar extends Component {
 
   render(props) {
     return (
-         <div class="search-box">
-              <div class="inner">
-                   <form action="submit" method="get" accept-charset="utf-8">
+         <div className="search-box">
+              <div className="inner">
+                   <form action="submit" method="get" acceptCharset="utf-8">
                         <input type="text" placeholder="Search" name="q" /><button type="submit">SEARCH</button>
                    </form>
               </div>
