@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { withFirebase } from './Firebase';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 
 class Person extends Component {
   constructor(props) {
@@ -9,19 +10,26 @@ class Person extends Component {
   }
 
   render(props) {
-    return (
-      <Card className="part-width part-height centered">
-        <Card.Img variant="top" src="" />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-          <Card.Text>
-            Some quick example text to build on the card title and make up the bulk of
-            the card's content.
-          </Card.Text>
-          <Button variant="primary">Go somewhere</Button>
-        </Card.Body>
-      </Card>
-    )
+    if (this.props.data) {
+      let name = this.props.data['name']['first'] + " " + this.props.data['name']['last'];
+      return (
+        <Card className="custom-card centered">
+          <Card.Img variant="top" className="resize-img" src={this.props.data['photoURL']}/>
+          <Card.Body className="custom-card-body no-padding no-margin">
+            <Card.Text className="small-text custom-font card-padding"><span className="med-text heavy-font">{name}</span> <br></br> Business Analyst</Card.Text>
+          </Card.Body>
+        </Card>
+      )
+    } else {
+      return (
+        <Card className="custom-card centered">
+          <Card.Img variant="top" className="resize-img" src="https://lh3.googleusercontent.com/-w5La0iJhe34/AAAAAAAAAAI/AAAAAAAAAA4/zgGWU7zITik/photo.jpg"/>
+          <Card.Body className="resize-card-body">
+            <Card.Text className="med-text heavy-font">Placeholder</Card.Text>
+          </Card.Body>
+        </Card>
+      )
+    }
   }
 }
 

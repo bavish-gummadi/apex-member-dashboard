@@ -36,12 +36,17 @@
 .part-width{width: 90% !important}
 
 .centered{margin: auto !important}
-.std-padding{padding-left: 2vw; padding-right: 1vw; padding-top: 1vh; padding-bottom: 1vh;}
+.card-padding{padding-left: 0.5vw; padding-right: 0.5vw; padding-top: 1vh; padding-bottom: 0.5vh;}
 .no-margin{margin: 0 0px !important}
+.no-padding{padding: 0 0px !important}
 .top-gap{padding-top: 2.5vh !important}
 
 .large-text{font-size: 1.5rem !important}
+.med-text{font-size: 1.0rem !important}
+.small-text{font-size: 0.8rem !important}
 .custom-font{font-family: 'Poppins', sans-serif !important}
+.heavy-font{font-weight: bold !important}
+.text-left{text-align: left !important}
 .edge{border-radius: 0 !important}
 
 .visible{visibility: visible !important}
@@ -50,7 +55,13 @@
 .container-side{width: 75%; height: 100vh; float: right; background-color: #6E6E6E}
 .container-side:after{clear: both}
 
+.fixed-table{table-layout: fixed; display: block}
+.resize-img{max-width: 12vw; min-height: 16vh; border-radius: 0}
+.custom-card-body{max-width: 12vw; max-height: 14vh; min-height: 8vh; background-color: rgb(255, 255, 255, 1)}
+.custom-card{width: 12vw; height: 30vh; border: none; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3); border-radius: 0;}
+
 .profile{height: 100px}
+
 
 
 .header{ width: 100%; height: 10vh; float: left; padding: 0 0px; position: relative; z-index: 0; text-align: center; background-color: #8F1923}

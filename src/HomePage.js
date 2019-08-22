@@ -40,6 +40,7 @@ class HomePage extends Component {
             // member[doc.id] = doc.data();
             // members.push(member);
             members.push(doc.data());
+            console.log(doc.data());
         });
         this.setState({members: members});
     });
@@ -80,7 +81,7 @@ class HomePage extends Component {
             <Header setCategory={this.setCategory}/>
             <SearchBar/>
             <div className="content">
-              <div className="overlay-red top-gap">
+              <div className="overlay-red">
                 {content}
               </div>
             </div>
