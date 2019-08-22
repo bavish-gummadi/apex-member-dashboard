@@ -30,13 +30,22 @@
   }
 }
 .full-height{height: 100% !important}
+.part-height{height: 90% !important}
 .full-width{width: 100% !important}
+.most-width{width: 97% !important}
+.part-width{width: 90% !important}
+
+.centered{margin: auto !important}
+.std-padding{padding-left: 2vw; padding-right: 1vw; padding-top: 1vh; padding-bottom: 1vh;}
 .no-margin{margin: 0 0px !important}
+.top-gap{padding-top: 2.5vh !important}
+
 .large-text{font-size: 1.5rem !important}
 .custom-font{font-family: 'Poppins', sans-serif !important}
 .edge{border-radius: 0 !important}
-.button-black:selection{background-color: black !important}
-.top-gap{padding-top: 2.5vh !important}
+
+.visible{visibility: visible !important}
+.hidden{visibility: hidden !important}
 
 .container-side{width: 75%; height: 100vh; float: right; background-color: #6E6E6E}
 .container-side:after{clear: both}

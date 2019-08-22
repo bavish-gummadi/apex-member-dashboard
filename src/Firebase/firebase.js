@@ -88,6 +88,7 @@ class Firebase {
     let user = await this.checkAuthStatus()
     if (user) {
       const usersDB = app.firestore().collection("users");
+      this.userList = usersDB;
       await usersDB.doc(user.uid).get().then(async (doc) => {
         if (doc.exists) {
           console.log("Document data:", doc.data());

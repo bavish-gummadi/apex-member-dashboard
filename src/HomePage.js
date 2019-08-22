@@ -4,7 +4,7 @@ import * as ROUTES from './constants/routes';
 import Header from './Header.js'
 import Spinner from 'react-bootstrap/Spinner'
 import SearchBar from './SearchBar.js'
-import Results from './Results.js'
+import People from './People.js'
 
 
 class HomePage extends Component {
@@ -15,11 +15,34 @@ class HomePage extends Component {
     }
 
     this.setCategory = this.setCategory.bind(this);
+    this.prepUsers = this.prepUsers.bind(this);
   }
 
   setCategory = (param) => {
     this.setState({category: param});
-    
+    if (param == 'people'){
+      this.prepUsers();
+    }
+    else if (param == 'projects'){
+
+    }
+    else {
+
+    }
+  }
+
+  prepUsers = async (props) => {
+    let members = [];
+    await this.props.firebase.userList.get().then((querySnapshot) => {
+        querySnapshot.forEach(function(doc) {
+            // doc.data() is never undefined for query doc snapshots
+            // let member = {};
+            // member[doc.id] = doc.data();
+            // members.push(member);
+            members.push(doc.data());
+        });
+        this.setState({members: members});
+    });
   }
 
   signOut = (props) => {
@@ -33,13 +56,34 @@ class HomePage extends Component {
   //HEY ROBERT WHAT IS UP BUD
   //TODO this is basically where you can get started.
   render(props) {
+    let content;
+    if (this.state.category == 'people') {
+      if (this.state.members) {
+        content = <People category="people" members={this.state.members} prepUsers={this.prepUsers}/>
+      } else {
+        content = <Spinner />
+      }
+    }
+    else if (this.state.category == 'projects'){
+      if (this.state.members) {
+        content = <People category="projects"/>
+      } else {
+        content = <Spinner />
+      }
+    }
+    else if (this.state.category == 'resources') {
+      content = <People category="resources"/>
+    }
     return (
       <div>
         <div className="container-side">
             <Header setCategory={this.setCategory}/>
-            <SearchBar />
-            <h2>{this.state.category}</h2>
-            <Results />
+            <SearchBar/>
+            <div className="content">
+              <div className="overlay-red top-gap">
+                {content}
+              </div>
+            </div>
         </div>
         <header className="App-header">
           {this.props.firebase.user ? (
