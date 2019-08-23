@@ -48,7 +48,6 @@ class HomePage extends Component {
             // member[doc.id] = doc.data();
             // members.push(member);
             members.push(doc.data());
-            console.log(doc.data());
         });
         this.setState({members: members});
     });
@@ -68,7 +67,7 @@ class HomePage extends Component {
     let content;
     if (this.state.category === 'people') {
       if (this.state.members) {
-        content = <> <People category="people" start={this.state.page} members={this.state.members}/>
+        content = <> <People category="people" start={this.state.page} members={this.state.members} history={this.props.history}/>
         <PageNav itemsPerPage={8} page={this.state.page} queryList={this.state.members} setPage={this.setPage}/> </>
       } else {
         content = <Spinner />
@@ -111,8 +110,8 @@ class HomePage extends Component {
           <h2>
             Apex Member Dashboard
           </h2>
-          <Button variant="outline-light" onClick={this.signOut}>HERE SIGN OUT</Button>
-          <Button variant="outline-light" onClick={this.logCredentials}>HERE TO LOG CREDS</Button>
+          <Button variant="outline-light" onClick={this.signOut}>SIGN OUT</Button>
+          <Button variant="outline-light" onClick={this.logCredentials}>LOG CREDS</Button>
 
         </header>
       </div>

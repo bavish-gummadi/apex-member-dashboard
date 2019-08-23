@@ -21,7 +21,7 @@ class People extends Component {
         let itemKey = "member-" + idx;
         if (idx < this.props.members.length)
         {
-          children.push(<td key={itemKey} className="visible"><Person data={this.props.members[idx]}/></td>);
+          children.push(<td key={itemKey} className="visible"><Person data={this.props.members[idx]} history={this.props.history}/></td>);
         } else {
           children.push(<td key={itemKey} className="hidden"><Person/></td>);
         }
