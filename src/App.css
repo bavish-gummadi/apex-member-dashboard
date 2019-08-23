@@ -36,6 +36,7 @@
 .part-width{width: 90% !important}
 
 .centered{margin: auto !important}
+.top-align{vertical-align: top !important}
 .no-margin{margin: 0 0px !important}
 .no-padding{padding: 0 0px !important}
 .top-gap{padding-top: 2.5vh !important}
@@ -60,11 +61,13 @@
 .container-side{width: 75%; height: 100vh; float: right; background-color: #6E6E6E}
 .container-side:after{clear: both}
 
-.fixed-table{table-layout: fixed; display: block}
-.resize-img{max-width: 15vw; min-height: 15vh; border-radius: 0}
+.fixed-table{table-layout: fixed;}
+.custom-table-row{height: 35vh;}
+.card-img{width: 100%; min-height: 45.45%; border-radius: 0}
+.custom-card-body{width: 100%; max-height: 45.45%; min-height: 39.4%; background-color: rgb(255, 255, 255, 1); text-align: left}
 .custom-card{width: 15vw; height: 33vh; border: none; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3), 0 6px 20px 0 rgba(0, 0, 0, 0.3); border-radius: 0;}
-.custom-card-body{max-width: 15vw; max-height: 15vh; min-height: 13vh; background-color: rgb(255, 255, 255, 1); text-align: left}
-.card-padding{padding-left: 1.5vw; padding-right: 0.5vw; padding-top: 2vh; padding-bottom: 0.5vh;}
+.custom-card:hover{width: 15.5vw; height: 34vh; transition: 0.3s ease;}
+.card-padding{padding-left: 10%; padding-right: 3.33%; padding-top: 8%; padding-bottom: 3.33%;}
 
 .profile{height: 100px}
 

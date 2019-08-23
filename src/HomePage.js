@@ -6,6 +6,7 @@ import Header from './Header.js'
 import Spinner from 'react-bootstrap/Spinner'
 import SearchBar from './SearchBar.js'
 import People from './People.js'
+import Projects from './Projects.js'
 import PageNav from './PageNavigation.js'
 
 
@@ -74,8 +75,8 @@ class HomePage extends Component {
       }
     }
     else if (this.state.category === 'projects'){
-      if (this.state.members) {
-        content = <People category="projects"/>
+      if (this.state.projects) {
+        content = <Projects category="projects" start={this.state.page}/>
       } else {
         content = <Spinner />
       }

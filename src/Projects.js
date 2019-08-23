@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { withFirebase } from './Firebase';
-import Person from './Person.js';
+import Project from './Project.js';
 
-class People extends Component {
+class Projects extends Component {
   constructor(props) {
     super(props);
     this.createTable = this.createTable.bind(this);
@@ -19,15 +19,14 @@ class People extends Component {
       for (let j = 0; j < 4; j++) {
         let idx = (start * 8) + (4 * i) + j;
         let itemKey = "member-" + idx;
-        if (idx < this.props.members.length)
-        {
-          children.push(<td key={itemKey} className="visible"><Person data={this.props.members[idx]}/></td>);
+        if (idx < this.props.projects.length) {
+          children.push(<td key={itemKey} className="visible"><Project/></td>);
         } else {
-          children.push(<td key={itemKey} className="hidden"><Person/></td>);
+          children.push(<td key={itemKey} className="hidden"><Project/></td>);
         }
       }
       //Create the parent and add the children
-      table.push(<tr className="custom-table-row" key={rowKey}>{children}</tr>)
+      table.push(<tr key={rowKey}>{children}</tr>)
     }
     return table
   }
@@ -45,7 +44,7 @@ class People extends Component {
 
   render(props) {
     return (
-      <table className="most-width fixed-table part-height centered">
+      <table className="most-width part-height centered">
         <tbody key="people-table">
           {this.createTable(this.props.start)}
         </tbody>
@@ -54,4 +53,4 @@ class People extends Component {
   }
 }
 
-export default withFirebase(People)
+export default withFirebase(Projects)
