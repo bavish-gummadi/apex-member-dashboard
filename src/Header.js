@@ -22,9 +22,9 @@ class Header extends Component {
               </div>
               <div className="d-flex flex-column full-height site-nav">
                 <ToggleButtonGroup type="radio" name="categories" className="full-height full-width edge" defaultValue={1}>
-                  <ToggleButton variant="dark" onClick={(e) => this.props.setCategory("people")} className="edge large-text custom-font light-font top-gap" value={1}>PEOPLE</ToggleButton>
-                  <ToggleButton variant="dark" onClick={(e) => this.props.setCategory("projects")} className="edge large-text custom-font light-font top-gap" value={2}>PROJECTS</ToggleButton>
-                  <ToggleButton variant="dark" onClick={(e) =>this.props.setCategory("resources")} className="edge large-text custom-font light-font top-gap" value={3}>RESOURCES</ToggleButton>
+                  <ToggleButton variant="dark" onClick={(e) => this.props.setCategory("people", 0)} className="edge large-text custom-font light-font top-gap" value={1}>PEOPLE</ToggleButton>
+                  <ToggleButton variant="dark" onClick={(e) => this.props.setCategory("projects", 0)} className="edge large-text custom-font light-font top-gap" value={2}>PROJECTS</ToggleButton>
+                  <ToggleButton variant="dark" onClick={(e) =>this.props.setCategory("resources", 0)} className="edge large-text custom-font light-font top-gap" value={3}>RESOURCES</ToggleButton>
                 </ToggleButtonGroup>
               </div>
           </div>

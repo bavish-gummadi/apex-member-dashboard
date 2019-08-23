@@ -16,15 +16,17 @@ class HomePage extends Component {
     }
 
     this.setCategory = this.setCategory.bind(this);
+    this.setPage = this.setPage.bind(this);
     this.prepUsers = this.prepUsers.bind(this);
   }
 
-  setCategory = (param) => {
-    this.setState({category: param});
-    if (param === 'people'){
+  setCategory = (category, page) => {
+    this.setState({category: category});
+    this.setPage(page);
+    if (category === 'people'){
       this.prepUsers();
     }
-    else if (param === 'projects'){
+    else if (category === 'projects'){
 
     }
     else {
@@ -32,6 +34,9 @@ class HomePage extends Component {
     }
   }
 
+  setPage = (param) => {
+    this.setState({page: param});
+  }
   prepUsers = async (props) => {
     let members = [];
     await this.props.firebase.userList.get().then((querySnapshot) => {
@@ -61,7 +66,8 @@ class HomePage extends Component {
     let content;
     if (this.state.category === 'people') {
       if (this.state.members) {
-        content = <> <People category="people" members={this.state.members} prepUsers={this.prepUsers}/> <PageNav queryList={this.state.members}/> </>
+        content = <> <People category="people" start={this.state.page} members={this.state.members}/>
+        <PageNav itemsPerPage={8} page={this.state.page} queryList={this.state.members} setPage={this.setPage}/> </>
       } else {
         content = <Spinner />
       }

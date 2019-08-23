@@ -7,9 +7,9 @@ class People extends Component {
   constructor(props) {
     super(props);
     this.createTable = this.createTable.bind(this);
-    this.createDeck = this.createDeck.bind(this);
+    // this.createDeck = this.createDeck.bind(this);
   }
-  createTable = () => {
+  createTable = (start) => {
     let table = [];
 
     // Outer loop to create parent
@@ -18,7 +18,7 @@ class People extends Component {
       let rowKey = "row-" + i;
       //Inner loop to create children
       for (let j = 0; j < 4; j++) {
-        let idx = 4 * i + j;
+        let idx = (start * 8) + (4 * i) + j;
         let itemKey = "member-" + idx;
         if (idx < this.props.members.length)
         {
@@ -28,27 +28,27 @@ class People extends Component {
         }
       }
       //Create the parent and add the children
-      table.push(<tr className="table-height2" key={rowKey}>{children}</tr>)
+      table.push(<tr key={rowKey}>{children}</tr>)
     }
     return table
   }
 
-  createDeck = () => {
-    let deck = [];
-    let children = [];
-    // Outer loop to create parent
-    for (let i = 0; i < this.props.members.length; i++) {
-      children.push(<Person data={this.props.members[i]}/>);
-    }
-    deck.push(<CardDeck>{children}</CardDeck>)
-    return deck
-  }
+  // createDeck = () => {
+  //   let deck = [];
+  //   let children = [];
+  //   // Outer loop to create parent
+  //   for (let i = 0; i < this.props.members.length; i++) {
+  //     children.push(<Person data={this.props.members[i]}/>);
+  //   }
+  //   deck.push(<CardDeck>{children}</CardDeck>)
+  //   return deck
+  // }
 
   render(props) {
     return (
       <table className="most-width part-height centered">
         <tbody key="people-table">
-          {this.createTable()}
+          {this.createTable(this.props.start)}
         </tbody>
       </table>
     )
