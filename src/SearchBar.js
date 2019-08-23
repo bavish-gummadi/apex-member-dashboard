@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { withFirebase } from './Firebase';
-import logo from './images/logo.png';
 
 class SearchBar extends Component {
   constructor(props) {

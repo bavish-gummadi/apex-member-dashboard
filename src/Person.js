@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { withFirebase } from './Firebase';
 import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
-import Spinner from 'react-bootstrap/Spinner';
 
 class Person extends Component {
   constructor(props) {
@@ -14,9 +12,9 @@ class Person extends Component {
       let name = this.props.data['name']['first'] + " " + this.props.data['name']['last'];
       return (
         <Card className="custom-card centered">
-          <Card.Img variant="top" className="resize-img" src={this.props.data['photoURL']}/>
+          <Card.Img variant="top" className="resize-img" src={this.props.data['apexPhoto']}/>
           <Card.Body className="custom-card-body no-padding no-margin">
-            <Card.Text className="small-text custom-font card-padding"><span className="med-text heavy-font">{name}</span> <br></br> Business Analyst</Card.Text>
+            <Card.Text className="small-text custom-font-secondary card-padding color-gray"><span className="med-text heavy-font custom-font color-black">{name}</span> <br></br> Business Analyst <br></br> &#8212;</Card.Text>
           </Card.Body>
         </Card>
       )

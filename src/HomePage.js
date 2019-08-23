@@ -5,6 +5,7 @@ import Header from './Header.js'
 import Spinner from 'react-bootstrap/Spinner'
 import SearchBar from './SearchBar.js'
 import People from './People.js'
+import PageNav from './PageNavigation.js'
 
 
 class HomePage extends Component {
@@ -20,10 +21,10 @@ class HomePage extends Component {
 
   setCategory = (param) => {
     this.setState({category: param});
-    if (param == 'people'){
+    if (param === 'people'){
       this.prepUsers();
     }
-    else if (param == 'projects'){
+    else if (param === 'projects'){
 
     }
     else {
@@ -58,21 +59,21 @@ class HomePage extends Component {
   //TODO this is basically where you can get started.
   render(props) {
     let content;
-    if (this.state.category == 'people') {
+    if (this.state.category === 'people') {
       if (this.state.members) {
-        content = <People category="people" members={this.state.members} prepUsers={this.prepUsers}/>
+        content = <> <People category="people" members={this.state.members} prepUsers={this.prepUsers}/> <PageNav queryList={this.state.members}/> </>
       } else {
         content = <Spinner />
       }
     }
-    else if (this.state.category == 'projects'){
+    else if (this.state.category === 'projects'){
       if (this.state.members) {
         content = <People category="projects"/>
       } else {
         content = <Spinner />
       }
     }
-    else if (this.state.category == 'resources') {
+    else if (this.state.category === 'resources') {
       content = <People category="resources"/>
     }
     return (

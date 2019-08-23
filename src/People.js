@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { withFirebase } from './Firebase';
 import Person from './Person.js';
-import Card from 'react-bootstrap/Card';
 import CardDeck from 'react-bootstrap/CardDeck';
 
 class People extends Component {
