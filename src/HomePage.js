@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { withFirebase } from './Firebase';
 import * as ROUTES from './constants/routes';
+import Button from 'react-bootstrap/Button';
 import Header from './Header.js'
 import Spinner from 'react-bootstrap/Spinner'
 import SearchBar from './SearchBar.js'
@@ -109,8 +110,8 @@ class HomePage extends Component {
           <h2>
             Apex Member Dashboard
           </h2>
-          <button onClick={this.signOut}>HERE SIGN OUT</button>
-          <button onClick={this.logCredentials}>HERE TO LOG CREDS</button>
+          <Button variant="outline-light" onClick={this.signOut}>HERE SIGN OUT</Button>
+          <Button variant="outline-light" onClick={this.logCredentials}>HERE TO LOG CREDS</Button>
 
         </header>
       </div>
