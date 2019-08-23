@@ -14,21 +14,32 @@ class PageNav extends Component {
     let children = [];
 
     if (this.props.page > 0) {
-      children.push(<td key="prev"><Button variant="outline-light" className="visible" onClick={(e) => this.props.setPage(this.props.page - 1)}>&#60;</Button></td>);
+      children.push(<td key="prev"><Button variant="outline-light" onClick={(e) => this.props.setPage(this.props.page - 1)}>&#60;</Button></td>);
     } else {
-      children.push(<td key="prev"><Button variant="outline-light" className="hidden" onClick={(e) => this.props.setPage(this.props.page - 1)}>&#60;</Button></td>);
+      children.push(<td key="prev"><Button variant="outline-light" disabled onClick={(e) => this.props.setPage(this.props.page - 1)}>&#60;</Button></td>);
     }
 
     // Outer loop to create parent
     for (let i = 0; i < pages; i++) {
       let itemKey = "member-" + i;
-      children.push(<td key={itemKey}><Button variant="outline-light" onClick={(e) => this.props.setPage(i)}>{i + 1}</Button></td>);
+      if (i === this.props.page) {
+        children.push(<td key={itemKey}><Button variant="dark">{i + 1}</Button></td>);
+      }
+      else if ((i === this.props.page + 3 && i !== pages - 1) || (i === this.props.page - 3 && i !== 0)) {
+        children.push(<td key={itemKey}><Button variant="outline-light" disabled>...</Button></td>);
+      }
+      else if (i === 0 || i === pages - 1) {
+        children.push(<td key={itemKey}><Button variant="outline-light" onClick={(e) => this.props.setPage(i)}>{i + 1}</Button></td>);
+      }
+      else if (i < this.props.page + 3 && i > this.props.page - 3) {
+        children.push(<td key={itemKey}><Button variant="outline-light" onClick={(e) => this.props.setPage(i)}>{i + 1}</Button></td>);
+      }
       //Create the parent and add the children
     }
     if (this.props.page < pages - 1) {
-        children.push(<td key="next"><Button variant="outline-light" className="visible" onClick={(e) => this.props.setPage(this.props.page + 1)}>&#62;</Button></td>);
+        children.push(<td key="next"><Button variant="outline-light" onClick={(e) => this.props.setPage(this.props.page + 1)}>&#62;</Button></td>);
     } else {
-        children.push(<td key="next"><Button variant="outline-light" className="hidden" onClick={(e) => this.props.setPage(this.props.page + 1)}>&#62;</Button></td>);
+        children.push(<td key="next"><Button variant="outline-light" disabled onClick={(e) => this.props.setPage(this.props.page + 1)}>&#62;</Button></td>);
     }
 
     table.push(<tr key="page-nav">{children}</tr>)
@@ -37,7 +48,7 @@ class PageNav extends Component {
 
   render(props) {
     return (
-      <table className="most-width centered">
+      <table className="most-width centered top-fluff">
         <tbody key="page-nav-table">
           {this.createTable(this.props.itemsPerPage)}
         </tbody>

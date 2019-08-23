@@ -88,7 +88,7 @@ class HomePage extends Component {
             <Header setCategory={this.setCategory}/>
             <SearchBar/>
             <div className="content">
-              <div className="overlay-red">
+              <div className="overlay-red top-gap">
                 {content}
               </div>
             </div>

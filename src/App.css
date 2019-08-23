@@ -39,9 +39,10 @@
 .no-margin{margin: 0 0px !important}
 .no-padding{padding: 0 0px !important}
 .top-gap{padding-top: 2.5vh !important}
+.top-fluff{margin-top: 1.5vh !important}
 
 .large-text{font-size: 1.5rem !important}
-.med-text{font-size: 1.2rem !important}
+.med-text{font-size: 1.08rem !important}
 .small-text{font-size: 0.85rem !important}
 .custom-font{font-family: 'Poppins', sans-serif !important}
 .custom-font-secondary{font-family: 'Fjalla One', sans-serif !important}
