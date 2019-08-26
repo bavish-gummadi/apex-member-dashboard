@@ -2,28 +2,38 @@ import React, { Component } from 'react';
 import { withFirebase } from './Firebase';
 import * as ROUTES from './constants/routes';
 import Card from 'react-bootstrap/Card';
+import ProfilePage from './ProfilePage.js';
 
 class Person extends Component {
   constructor(props) {
     super(props);
-    this.toProfile = this.toProfile.bind(this);
+    this.state = {
+      show: false,
+    }
+    this.handleClose = this.handleClose.bind(this);
+    this.handleShow = this.handleShow.bind(this);
   }
 
-  toProfile = () => {
-    console.log("Caroline is cute");
-    this.props.history.push(ROUTES.PROFILE);
+  handleClose = () => {
+    this.setState({show: false});
+  }
+  handleShow = () => {
+    this.setState({show: true});
   }
 
   render(props) {
     if (this.props.data) {
       let name = this.props.data['name']['first'] + " " + this.props.data['name']['last'];
       return (
-        <Card as="button" onClick={(e) => this.toProfile()} className="no-padding custom-card centered">
+        <>
+        <Card as="button" onClick={this.handleShow} className="no-padding custom-card centered">
           <Card.Img variant="top" className="card-img" src={this.props.data['apexPhoto']}/>
           <Card.Body className="custom-card-body no-padding no-margin">
             <Card.Text className="small-text custom-font-secondary card-padding color-gray"><span className="med-text heavy-font custom-font color-black">{name}</span> <br></br> Business Analyst <br></br> &#8212;</Card.Text>
           </Card.Body>
         </Card>
+        <ProfilePage handleClose={this.handleClose} modalShow={this.state.show} data={this.props.data} />
+        </>
       )
     } else {
       return (

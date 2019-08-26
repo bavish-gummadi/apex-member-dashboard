@@ -10,23 +10,18 @@ class Projects extends Component {
   }
   createTable = (start) => {
     let table = [];
+    let children = [];
 
     // Outer loop to create parent
     for (let i = 0; i < 2; i++) {
-      let children = []
-      let rowKey = "row-" + i;
-      //Inner loop to create children
-      for (let j = 0; j < 4; j++) {
-        let idx = (start * 8) + (4 * i) + j;
-        let itemKey = "member-" + idx;
-        if (idx < this.props.projects.length) {
-          children.push(<td key={itemKey} className="visible"><Project/></td>);
-        } else {
-          children.push(<td key={itemKey} className="hidden"><Project/></td>);
-        }
+      let idx = (start * 3) + i;
+      let itemKey = "member-" + idx;
+      if (idx < this.props.projects.length) {
+        children.push(<td key={itemKey} className="visible"><Project/></td>);
+      } else {
+        children.push(<td key={itemKey} className="hidden"><Project/></td>);
       }
-      //Create the parent and add the children
-      table.push(<tr key={rowKey}>{children}</tr>)
+      table.push(<tr key="project-row">{children}</tr>);
     }
     return table
   }
