@@ -25,13 +25,13 @@ class PageNav extends Component {
       if (i === this.props.page) {
         children.push(<td key={itemKey}><Button variant="dark">{i + 1}</Button></td>);
       }
-      else if ((i === this.props.page + 3 && i !== pages - 1) || (i === this.props.page - 3 && i !== 0)) {
+      else if ((i === this.props.page + 4 && i !== pages - 1) || (i === this.props.page - 4 && i !== 0)) {
         children.push(<td key={itemKey}><Button variant="outline-light" disabled>...</Button></td>);
       }
       else if (i === 0 || i === pages - 1) {
         children.push(<td key={itemKey}><Button variant="outline-light" onClick={(e) => this.props.setPage(i)}>{i + 1}</Button></td>);
       }
-      else if (i < this.props.page + 3 && i > this.props.page - 3) {
+      else if (i < this.props.page + 4 && i > this.props.page - 4) {
         children.push(<td key={itemKey}><Button variant="outline-light" onClick={(e) => this.props.setPage(i)}>{i + 1}</Button></td>);
       }
       //Create the parent and add the children

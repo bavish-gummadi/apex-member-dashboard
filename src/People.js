@@ -16,8 +16,8 @@ class People extends Component {
       let children = []
       let rowKey = "row-" + i;
       //Inner loop to create children
-      for (let j = 0; j < 4; j++) {
-        let idx = (start * 8) + (4 * i) + j;
+      for (let j = 0; j < 5; j++) {
+        let idx = (start * 10) + (5 * i) + j;
         let itemKey = "member-" + idx;
         if (idx < this.props.members.length)
         {

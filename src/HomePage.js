@@ -84,8 +84,7 @@ class HomePage extends Component {
       content = <People category="resources"/>
     }
     return (
-      <div>
-        <div className="container-side">
+        <div className="container-full">
             <Header setCategory={this.setCategory}/>
             <SearchBar/>
             <div className="content">
@@ -94,27 +93,26 @@ class HomePage extends Component {
               </div>
             </div>
         </div>
-        <header className="App-header">
-          {this.props.firebase.user ? (
-            <Fragment>
-              <h2>
-                Hi {this.props.firebase.userData.name.first}
-              </h2>
-              <img className="profile" src={this.props.firebase.userData.photoURL} alt="userPhoto"/>
-            </Fragment>
-          ) : (
-            <Spinner/>
-            )
-          }
-
-          <h2>
-            Apex Member Dashboard
-          </h2>
-          <Button variant="outline-light" onClick={this.signOut}>SIGN OUT</Button>
-          <Button variant="outline-light" onClick={this.logCredentials}>LOG CREDS</Button>
-
-        </header>
-      </div>
+        // <header className="App-header">
+        //   {this.props.firebase.user ? (
+        //     <Fragment>
+        //       <h2>
+        //         Hi {this.props.firebase.userData.name.first}
+        //       </h2>
+        //       <img className="profile" src={this.props.firebase.userData.photoURL} alt="userPhoto"/>
+        //     </Fragment>
+        //   ) : (
+        //     <Spinner/>
+        //     )
+        //   }
+        //
+        //   <h2>
+        //     Apex Member Dashboard
+        //   </h2>
+        //   <Button variant="outline-light" onClick={this.signOut}>SIGN OUT</Button>
+        //   <Button variant="outline-light" onClick={this.logCredentials}>LOG CREDS</Button>
+        //
+        // </header>
     );
   }
 }

@@ -14,7 +14,7 @@ class ProfilePage extends Component {
   render(props) {
     return (
       <>
-      <Modal show={this.props.modalShow} onHide={this.props.handleClose}>
+      <Modal show={this.props.modalShow} onHide={this.props.handleClose} dialogClassName="custom-modal" centered>
         <Modal.Header closeButton>
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
